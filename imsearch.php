@@ -1,7 +1,8 @@
+<?php require_once("res/x5engine.php"); ?>
 <!DOCTYPE html><!-- HTML5 -->
 <html prefix="og: http://ogp.me/ns#" lang="de-DE" dir="ltr">
 	<head>
-		<title>UVM Generator</title>
+		<title>Suchen - UVM Generator</title>
 		<meta charset="utf-8" />
 		<!--[if IE]><meta http-equiv="ImageToolbar" content="False" /><![endif]-->
 		<meta name="author" content="Helmut " />
@@ -13,12 +14,12 @@
 		<link rel="stylesheet" type="text/css" href="style/style.css?13-1-8-23" media="screen,print" />
 		<link rel="stylesheet" type="text/css" href="style/template.css?13-1-8-23" media="screen" />
 		<link rel="stylesheet" type="text/css" href="style/menu.css?13-1-8-23" media="screen" />
-		<link rel="stylesheet" type="text/css" href="pcss/index.css?13-1-8-23-637875546311252078" media="screen,print" />
+		<link rel="stylesheet" type="text/css" href="pcss/imsearch.css?13-1-8-23-637875546311252078" media="screen,print" />
 		<script type="text/javascript" src="res/jquery.js?13-1-8-23"></script>
 		<script type="text/javascript" src="res/x5engine.js?13-1-8-23" data-files-version="13-1-8-23"></script>
 		<script type="text/javascript">
 			window.onload = function(){ checkBrowserCompatibility('Der von Ihnen verwendete Browser unterstützt nicht die die Funktionen, die für die Anzeige dieser Website benötigt werden.','Der von Ihnen verwendete Browser unterstützt möglicherweise nicht die die Funktionen, die für die Anzeige dieser Website benötigt werden.','[1]Browser aktualisieren[/1] oder [2]Vorgang fortsetzen[/2].','http://outdatedbrowser.com/'); };
-			x5engine.utils.currentPagePath = 'index.html';
+			x5engine.utils.currentPagePath = 'imsearch.php';
 		</script>
 		
 	</head>
@@ -27,7 +28,7 @@
 		<div id="imFooterBg"></div>
 		<div id="imPage">
 			<div id="imHeader">
-				<h1 class="imHidden">UVM Generator</h1>
+				<h1 class="imHidden">Suchen - UVM Generator</h1>
 				<div id="imHeaderObjects"></div>
 			</div>
 			<a class="imHidden" href="#imGoToCont" title="Überspringen Sie das Hauptmenü">Direkt zum Seiteninhalt</a>
@@ -37,7 +38,7 @@
 				<div id="imMnMn" class="auto main-menu">
 					<div class="hamburger-site-background menu-mobile-hidden"></div><div class="hamburger-button"><div><div><div class="hamburger-bar"></div><div class="hamburger-bar"></div><div class="hamburger-bar"></div></div></div></div><div class="hamburger-menu-background-container"><div class="hamburger-menu-background menu-mobile-hidden"><div class="hamburger-menu-close-button"><span>&times;</span></div></div></div>
 				<ul class="auto menu-mobile-hidden">
-					<li id="imMnMnNode0" class="imPage imMnMnCurrent">
+					<li id="imMnMnNode0" class=" imPage">
 						<a href="index.html">
 							<span class="imMnMnFirstBg">
 								<span class="imMnMnTxt"><span class="imMnMnImg"></span><span class="imMnMnTextLabel">Homepage</span></span>
@@ -68,39 +69,18 @@
 				<div id="imContentGraphics"></div>
 				<div id="imContent">
 					<a id="imGoToCont"></a>
-				<div id="imGroup_1" class="imVGroup">
-				<div id="imPageRow_1" class="imPageRow">
-				
-				<div id="imPageRowContent_1" class="imContentDataContainer">
-				<div id="imGroup_2" class="imHGroup">
-				<div id="imCell_2" class="" > <div id="imCellStyleGraphics_2"></div><div id="imCellStyle_2" ><div id="imTextObject_02">
-					<div class="text-tab-content"  id="imTextObject_02_tab0" style="">
-						<div class="text-inner">
-							First Test
-						</div>
-					</div>
-				
-				</div>
-				</div></div><div id="imCell_1" class="" > <div id="imCellStyleGraphics_1"></div><div id="imCellStyle_1" ><div id="imTextObject_01">
-					<div class="text-tab-content"  id="imTextObject_01_tab0" style="">
-						<div class="text-inner">
-							Erster Test
-						</div>
-					</div>
-				
-				</div>
-				</div></div>
-				</div></div>
-				</div>
-				<div id="imPageRow_2" class="imPageRow">
-				
-				<div id="imPageRowContent_2" class="imContentDataContainer">
-				<div id="imGroup_3" class="imEGroup"></div>
+				<div id="imSearchPage">
+				<h2 id="imPgTitle">Suchergebnisse</h2>
+				<?php
+				$search = new imSearch();
+				$keys = isset($_GET['search']) ? @htmlspecialchars($_GET['search']) : "";
+				$page = isset($_GET['page']) ? @htmlspecialchars($_GET['page']) : 0;
+				$type = isset($_GET['type']) ? @htmlspecialchars($_GET['type']) : "pages"; ?>
+				<div class="searchPageContainer">
+				<?php echo $search->search($keys, $page, $type); ?>
 				</div>
 				</div>
 				
-				</div>
-				<div id="imFooPad"></div><div id="imBtMnContainer" class="imContentDataContainer"><div id="imBtMn"><a href="index.html">Homepage</a> | <a href="seite-1.html">Seite 1</a> | <a href="seite-2.html">Seite 2</a> | <a href="seite-3.html">Seite 3</a> | <a href="imsitemap.html">Generelle Seitenstruktur</a></div></div>
 					<div class="imClear"></div>
 				</div>
 			</div>
